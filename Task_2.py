@@ -43,4 +43,45 @@
 # ('Елена', None)
 
 
+# from itertools import zip_longest
 
+
+# tutors = ['Иван', 'Анастасия', 'Петр', 'Сергей', 'Дмитрий', 'Борис', 'Елена']
+# groups1 = ['9А', '7В', '9Б', '9В', '8Б', '10А', '10Б', '9А']
+# groups2 = ['9А', '7В', '9Б', '9В']
+
+# lst1 = list(zip(tutors, groups1))
+# lst2 = list(zip_longest(tutors, groups2, fillvalue=None))
+# print(lst1)
+# print(lst2)
+
+'Решение через цикл:'
+
+
+def students_class(lst1: list, lst2: list) -> list:
+    '''
+    Длина результирующего списка не должна быть больше длины списка tutor
+    :param lst1: Принемает список tutors - имена учеников
+    :param lst2: Принемает список group - названия их классов
+    :return: Формирует список кортежей (tutor, group)
+    '''
+    res = []
+    n = len(lst1)
+    m = len(lst2)
+    if n <= m:
+        for i in range(n):
+            res.append((lst1[i], lst2[i]))
+        return res
+    else:
+        for i in range(n - m):
+            lst2.append(None)
+        for i in range(n):
+            res.append((lst1[i], lst2[i]))
+        return res
+
+
+tutors = ['Иван', 'Анастасия', 'Петр', 'Сергей', 'Дмитрий', 'Борис', 'Елена']
+groups1 = ['9А', '7В', '9Б', '9В', '8Б', '10А', '10Б', '9А']
+groups2 = ['9А', '7В', '9Б', '9В']
+print(students_class(tutors, groups1))
+print(students_class(tutors, groups2))
