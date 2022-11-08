@@ -10,4 +10,22 @@
 # src = [300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55]
 # result = [12, 44, 4, 10, 78, 123]
 
+def list_of_elements(lst: list) -> list:
+    '''
+    :param lst: Обрабатываемый список
+    :return: Список, содержащий те его элементы, 
+    значения которых больше предыдущего.
+    '''
+    res = []
+    for el in range(1, len(lst)-1):
+        if lst[el-1] < lst[el]:
+            res.append(lst[el])
+    return res
 
+
+src = [300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55]
+print(list_of_elements(src))
+
+# comprehensions
+res = [src[el] for el in range(1, len(src)-1) if src[el-1] < src[el]]
+print(res)
